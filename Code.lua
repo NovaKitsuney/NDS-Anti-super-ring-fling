@@ -6,8 +6,8 @@ end
 
 local Vampauth = loadstring(game:HttpGet("https://vampauth.com/client/vampauth.lua"))()
 local vp = Vampauth.new({
-    projectId  = "PASTE_PROJECT_ID_HERE",   -- from project page
-    authSecret = "PASTE_AUTH_SECRET_HERE", -- from project page (keep private)
+    projectId  = "BK2CSP8WO6J3N97I",   -- from project page
+    authSecret = "6cc3f9b718eb302a85567913e9dd74331222ed0859daa4bf", -- from project page (keep private)
 })
 
 local ok, data = vp:Check(KEY)
