@@ -1,39 +1,22 @@
---[[
-    ================================================================
-    [ OYB OFFICIAL | ROBLOX DEVELOPER ]
-    Website: https://oybofficial.com/
-    Builder: https://oybofficial.com/keysystem
-    YouTube: https://youtube.com/@OYBOfficial
-    Discord: https://discord.gg/kT55J724BK
-    ================================================================
-]]
-
--- ⚠️ IMPORTANT: Put this code at the VERY TOP of your Main Script (before obfuscating) ⚠️
-
-local ProtectionConfig = {
-    -- 🔴 CRITICAL: This MUST exactly match the 'Secret' value in your Key System's Config!
-    -- If your Key System has: Secret = "Test"
-    -- Then this must also be: SecretKey = "Test"
-    SecretKey = "NDS antifling",
-    
-    -- The name of your Hub (shown in the kick message if they try to bypass)
-    HubName = "NDS Anti super ring fling"
-}
-
--- Anti-Bypass Logic: Checks if the Key System successfully set the global variable
-if not _G[ProtectionConfig.SecretKey] then
-    local player = game:GetService("Players").LocalPlayer
-    if player then
-        player:Kick("\n🛡️ Unauthorized Execution 🛡️\n\nPlease use the official Key System to run " .. ProtectionConfig.HubName)
-    end
-    return -- Stops the rest of the script from loading!
+-- ===== Vampauth key check (keep at top) =====
+local KEY = getgenv().script_key or ""
+if KEY == "" then
+    return warn("[NDS Anti super ring fling] No key. Set getgenv().script_key = \"YOUR-KEY\" then run again.")
 end
 
--------------------------------------------------------------------------------
--- 👇 YOUR MAIN SCRIPT CODE STARTS HERE 👇
--------------------------------------------------------------------------------
+local Vampauth = loadstring(game:HttpGet("https://vampauth.com/client/vampauth.lua"))()
+local vp = Vampauth.new({
+    projectId  = "PASTE_PROJECT_ID_HERE",   -- from project page
+    authSecret = "PASTE_AUTH_SECRET_HERE", -- from project page (keep private)
+})
 
-print(ProtectionConfig.HubName .. " Loaded Successfully!")
+local ok, data = vp:Check(KEY)
+if not ok then
+    return warn("[NDS Anti super ring fling] Invalid / expired key:", data)
+end
+-- ===== end key check — your script starts below =====
+
+-- your full script here (NDS Anti super ring fling / whatever)
 
 
 
